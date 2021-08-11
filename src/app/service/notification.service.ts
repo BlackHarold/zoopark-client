@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({
@@ -6,11 +6,13 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class NotificationService {
 
-  constructor(private snackbar: MatSnackBar) { }
+  constructor(private snackbar: MatSnackBar) {
+  }
 
   public showSnackBar(message: string): void {
-    this.snackbar.open(message, null, {
-      duration: 2000
-    });
+    this.snackbar.open(message, '',
+      {
+        duration: 3000
+      });
   }
 }

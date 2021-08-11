@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -9,10 +9,11 @@ const USER_API = 'http://localhost:8080/api/user/';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  getUserById(id: number): Observable<any> {
-    return this.http.get(USER_API + id);
+  getUserById(userId: number): Observable<any> {
+    return this.http.get(USER_API + userId);
   }
 
   getCurrentUser(): Observable<any> {
@@ -20,6 +21,9 @@ export class UserService {
   }
 
   updateUser(user: any): Observable<any> {
-    return this.http.post(USER_API + 'update', user);
+    return this.http.post(USER_API + 'update',
+      {
+        user
+      });
   }
 }

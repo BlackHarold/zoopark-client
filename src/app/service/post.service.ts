@@ -14,7 +14,10 @@ export class PostService {
   }
 
   createPost(post: Post): Observable<any> {
-    return this.http.post(POST_API + 'create', post);
+    return this.http.post(POST_API + 'create',
+      {
+        post
+      });
   }
 
   getAllPosts(): Observable<any> {
@@ -26,10 +29,12 @@ export class PostService {
   }
 
   deletePost(id: number): Observable<any> {
-    return this.http.post(POST_API + id + '/delete', null);
+    return this.http.post(POST_API + id + '/delete',
+      {});
   }
 
   likePost(id: number, username: string): Observable<any> {
-    return this.http.post(POST_API + id + '/' + username + '/like', null);
+    return this.http.post(POST_API + id + '/' + username + '/like',
+      {});
   }
 }

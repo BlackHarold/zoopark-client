@@ -13,9 +13,10 @@ export class CommentService {
   }
 
   addToCommentToPost(postId: number, message: string): Observable<any> {
-    return this.http.post(COMMENT_API + postId + '/create', {
-      message: message
-    });
+    return this.http.post(COMMENT_API + postId + '/create',
+      {
+        message: message
+      });
   }
 
   getCommentsToPost(postId: number): Observable<any> {
@@ -23,7 +24,8 @@ export class CommentService {
   }
 
   deleteComment(commentId: number): Observable<any> {
-    return this.http.post(COMMENT_API + commentId + '/delete', null);
+    return this.http.post(COMMENT_API + commentId + '/delete',
+      {});
   }
 
 }
