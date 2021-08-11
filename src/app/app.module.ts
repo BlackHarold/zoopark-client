@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MaterialModule} from "./material.module";
+import {MaterialModule} from "./material-module";
 import {HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './auth/auth/login/login.component';
+import { RegisterComponent } from './auth/auth/register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
