@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Post} from "../models/Post";
 
 const IMAGE_API = 'http://localhost:8181/api/image/';
 
