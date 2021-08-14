@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-
-import {AuthService} from "../../service/auth.service";
-import {TokenStorageService} from "../../service/token-storage.service";
-import {NotificationService} from "../../service/notification.service";
-import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../service/auth.service';
+import {TokenStorageService} from '../../service/token-storage.service';
+import {Router} from '@angular/router';
+import {NotificationService} from '../../service/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +14,6 @@ export class LoginComponent implements OnInit {
 
   public loginForm: any;
 
-  public credential = {'username': '', 'password': ''}
-
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
@@ -24,7 +21,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder) {
     if (this.tokenStorage.getUser()) {
-      this.router.navigate(['main']);
+      this.router.navigate(['main']).then(r => console.log(r));
     }
   }
 
@@ -39,14 +36,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
-    console.log(this.credential.username + " " + this.credential.password);
-
+  submit(): void {
     this.authService.login({
-      username: this.credential.username,
-      password: this.credential.password
+      username: this.loginForm.value.username,
+      password: this.loginForm.value.password
     }).subscribe(data => {
-      console.log('log')
+      console.log(data);
 
       this.tokenStorage.saveToken(data.token);
       this.tokenStorage.saveUser(data);
