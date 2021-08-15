@@ -30,7 +30,7 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.postService.getAllPosts()
       .subscribe(data => {
-        this.posts = data.getAllPosts();
+        this.posts = data;
         this.getImagesToPosts(this.posts);
         this.getCommentsToPosts(this.posts);
         this.isPostsLoaded = true;
@@ -38,7 +38,7 @@ export class IndexComponent implements OnInit {
 
     this.userService.getCurrentUser()
       .subscribe(data => {
-        this.user = data.getUser();
+        this.user = data;
         this.isUserDataLoaded = true;
       })
   }

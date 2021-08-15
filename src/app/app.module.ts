@@ -16,6 +16,8 @@ import {ProfileComponent} from "./user/profile/profile.component";
 import {UserPostsComponent} from "./user/user-posts/user-posts.component";
 import {EditUserComponent} from "./user/edit-user/edit-user.component";
 import {AddPostComponent} from "./user/add-post/add-post.component";
+import {authErrorInterceptorProviders} from "./helper/error-interceptor.service";
+import {authInterceptorProviders} from "./helper/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import {AddPostComponent} from "./user/add-post/add-post.component";
     FormsModule,
     MatGridListModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders, authErrorInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {
