@@ -14,10 +14,7 @@ export class PostService {
   }
 
   createPost(post: Post): Observable<any> {
-    return this.http.post(POST_API + 'create',
-      {
-        post
-      });
+    return this.http.post(POST_API + 'create', post);
   }
 
   getAllPosts(): Observable<any> {

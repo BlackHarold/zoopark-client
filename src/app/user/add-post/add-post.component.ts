@@ -39,16 +39,17 @@ export class AddPostComponent implements OnInit {
   }
 
   submit(): void {
-
     this.postService.createPost({
       title: this.postForm.value.title,
       caption: this.postForm.value.caption,
       location: this.postForm.value.location,
     }).subscribe(data => {
       this.createdPost = data;
-      console.log(data);
+      console.log("submit create post: " + JSON.stringify(data));
 
       if (this.createdPost.id != null) {
+        console.log('selectedFile: ' +JSON.stringify(this.selectedFile));
+        console.log('previewURL: ' + JSON.stringify(this.previewImgURL));
         this.imageUploadService.uploadImageToPost(this.selectedFile, this.createdPost.id)
           .subscribe(() => {
             this.notificationService.showSnackBar('Post created successfully');

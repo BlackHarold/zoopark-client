@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     }).subscribe(data => {
 
-      console.log(data);
       this.tokenStorage.saveToken(data.token);
       this.tokenStorage.saveUser(data);
 
